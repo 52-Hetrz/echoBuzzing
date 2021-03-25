@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.echoBuzzing.mapper.UserMapper">
+ 
+    <resultMap id="BaseResultMap" type="com.example.echoBuzzing.model.User">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="date" jdbcType="VARCHAR" property="date" />
+        <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+        <result column="image" jdbcType="VARCHAR" property="image" />
+    </resultMap>
+ 
+    <select	id="searchUser" resultType="User">
+    	select * from user where name=#{name} 
+    </select>
+    
+    <select id="register" resultType="User">
+    	insert into user (name,password,email,date,image) values(#{name},#{password},#{email},#{date},#{image})
+    </select>
+    
+    <select id="getPassword" resultType="String">
+    	select password from user where name=#{param1}
+    </select>
+    
+    <select id="changePassword" >
+    	update user set password=#{param2} where name=#{param1}
+    </select>
+</mapper>

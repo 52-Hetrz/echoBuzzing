@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.echoBuzzing.mapper.SongMapper" >
+
+<resultMap id="BaseResultMap" type="com.example.echoBuzzing.model.Song" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="songName" property="songName" jdbcType="VARCHAR" />
+        <result column="songSinger" property="songSinger" jdbcType="VARCHAR" />
+        <result column="songAlbum" property="songAlbum" jdbcType="VARCHAR" />
+        <result column="Lyric" property="Lyric" jdbcType="LONGVARCHAR" />
+        <result column="songComment" property="songComment" jdbcType="VARCHAR" />
+        <result column="playTimes" property="playTimes" jdbcType="INTEGER" />
+        <result column="songAddress" property="songAddress" jdbcType="VARCHAR" />
+        <result column="pictureAddress" property="pictureAddress" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <select id="getSongbyId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT * FROM song WHERE id = #{id}
+    </select>
+    
+    <select id="getSongbySongName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	SELECT * FROM song WHERE songName = #{songName}
+    </select>
+    
+    <insert id="addSong" parameterType="com.example.echoBuzzing.model.Song" >
+        INSERT INTO
+        song
+        (songName,songSinger,songAlbum,Lyric,songComment,playTimes,songAddress,pictureAddress)
+        VALUES
+        (#{songName}, #{songSinger}, #{songAlbum}, #{Lyric}, #{songComment}, #{playTimes},#{songAddress},#{pictureAddress})
+    </insert>
+
+    <update id="update" parameterType="com.example.echoBuzzing.model.Song" >
+        UPDATE
+        song
+        SET
+        songName = #{songName},songSinger = #{songSinger},
+        songAlbum= #{songAlbum},Lyric = #{Lyric},
+        songComment = #{songComment},playTimes= #{playTimes},
+        songAddress= #{songAddress},pictureAddress= #{pictureAddress}
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer" >
+        DELETE FROM
+        song
+        WHERE
+        id = #{id}
+    </delete>
+
+</mapper>

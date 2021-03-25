@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.echoBuzzing.mapper.SongCommentMapper">
+
+
+<resultMap id="BaseResultMap" type="com.example.echoBuzzing.model.SongComment" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="songComment" property="songComment" jdbcType="VARCHAR" />
+        <result column="userID" property="userID" jdbcType="INTEGER" />
+        <result column="createTime" property="createTime" jdbcType="DATE" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+    </resultMap>
+
+<select id="getSongCommentbyID" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+ 	SELECT * FROM songcomment WHERE id = #{id}
+</select>
+
+ <insert id="addSongComment" parameterType="com.example.echoBuzzing.model.SongComment" >
+ 		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+ 		</selectKey>
+        INSERT INTO
+        songcomment
+        (songComment,userID,createTime,userName)
+        VALUES
+        (#{songComment},#{userID},#{createTime},#{userName})
+</insert>
+    
+     <update id="updateSongComment" parameterType="com.example.echoBuzzing.model.SongComment">
+     		UPDATE songcomment
+     		SET songComment=#{songComment},
+     			userID=#{userID},
+     			createTime=#{createTime},
+     			userName=#{userName}
+     		WHERE id=#{id}
+     </update>
+     
+     <delete id="deleteSongComment" parameterType="java.lang.Integer">
+     		DELETE FROM
+     		songcomment
+     		WHERE id=#{id}
+     </delete>
+
+</mapper>

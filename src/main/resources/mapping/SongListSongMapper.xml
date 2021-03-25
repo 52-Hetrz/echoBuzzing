@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.echoBuzzing.mapper.SongListSongMapper">
+  <resultMap id="BaseResultMap" type="com.example.echoBuzzing.model.SongListSong">
+    <result column="songListSongId" property="songListSongId" jdbcType="INTEGER" />
+    <result column="songListId" property="songListId" jdbcType="INTEGER" />
+    <result column="songId" property="songId" jdbcType="INTEGER" />
+  
+  </resultMap>
+  
+  
+  
+    <select id="findBySongListId" resultType="com.example.echoBuzzing.model.SongListSong">
+
+        SELECT * FROM song_list_song_tb WHERE songListId=#{songListId}
+
+    </select>
+
+
+
+    <select id="findBySongId" resultType="com.example.echoBuzzing.model.SongListSong">
+
+        SELECT * FROM song_list_song_tb WHERE songId=#{songId}
+
+    </select>
+
+
+
+    <insert id="insertOne">
+
+        INSERT INTO song_list_song_tb(songListId,songId)  VALUES (#{param1},#{param2})
+
+    </insert>
+
+
+
+    <delete id="deleteBySongListSongId">
+        
+        DELETE FROM song_list_song_tb WHERE songListSongId=#{songListSongId}
+
+    </delete>
+    
+    
+    
+    <delete id="deleteBySongListIdAndSongId">
+        
+        DELETE FROM song_list_song_tb WHERE songListId=#{param1} AND songId=#{param2}
+
+    </delete>
+
+
+
+    <select id="findBySongListIdAndSongId" resultType="com.example.echoBuzzing.model.SongListSong">
+
+        SELECT * FROM song_list_song_tb WHERE songListId=#{param1} AND songId=#{param2}
+
+    </select>
+
+</mapper>

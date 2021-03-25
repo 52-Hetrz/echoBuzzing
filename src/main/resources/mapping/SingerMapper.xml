@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.echoBuzzing.mapper.SingerMapper">
+ 
+    <resultMap id="BaseResultMap" type="com.example.echoBuzzing.model.Singer">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="date" jdbcType="VARCHAR" property="date" />
+        <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+        <result column="image" jdbcType="VARCHAR" property="image" />
+    </resultMap>
+    
+    <select id="searchSingerById" resultType="Singer">
+    	select * from user where id=#{id}
+    </select>
+</mapper>

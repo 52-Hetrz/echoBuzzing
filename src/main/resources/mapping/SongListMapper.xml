@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.echoBuzzing.mapper.SongListMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.echoBuzzing.model.SongList">
+
+        
+        <result column="songListId" property="songListId" jdbcType="INTEGER" />
+
+        <result column="songListName" property="songListName" jdbcType="VARCHAR" />
+
+        <result column="songListIntro" property="songListIntro" jdbcType="VARCHAR" />
+
+        <result column="userId" property="userId" jdbcType="INTEGER" />
+
+        <result column="label" property="label" jdbcType="VARCHAR" />
+
+        <result column="songListImg" property="songListImg" jdbcType="VARCHAR" />
+
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+
+        <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+
+        <result column="commentNumber" property="commentNumber" jdbcType="INTEGER" /> 
+
+    </resultMap>
+
+
+
+    <select id="findByUserId" resultType="com.example.echoBuzzing.model.SongList">
+        select * from song_list_tb where userId = #{userId}
+    </select>
+
+
+    <select id="findBySongListId" resultType="com.example.echoBuzzing.model.SongList">
+        select * from song_list_tb where songListId= #{songListId}
+    </select>
+    
+    
+    <insert id="insertSongList">
+        INSERT INTO song_list_tb(songListName,userId,createTime,label,songListImg,commentNumber) VALUES (#{param1},#{param2},#{param3},#{param4},#{param5},#{param6})
+    </insert>
+    
+    
+    
+    <delete id="deleteBySongListId" parameterType="java.lang.Integer">
+        DELETE FROM song_list_tb WHERE songListId=#{songListId}
+    </delete>
+    
+    
+    <select id="searchBySongListName" resultType="com.example.echoBuzzing.model.SongList" parameterType="java.lang.String">
+        SELECT * FROM song_list_tb
+        <where>
+            <if test="_parameter!=null">
+                songListName LIKE '%${_parameter}%'
+            </if>
+        </where>
+
+    </select>
+    
+    
+    <select id="findAll" resultType="com.example.echoBuzzing.model.SongList">
+        SELECT * FROM song_list_tb
+    </select>
+
+
+    <delete id="deleteBySongListNameAndUserId">
+        DELETE FROM song_list_tb WHERE songListName=#{arg0} AND userId=#{arg1}
+    </delete>
+
+
+    <select id="findBySongListNameAndUserId" resultType="com.example.echoBuzzing.model.SongList" >
+        SELECT * FROM song_list_tb WHERE songListName=#{arg0} AND userId=#{arg1}
+    </select>
+
+
+
+</mapper>
+
+
+
+
+

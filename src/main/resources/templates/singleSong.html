@@ -1,0 +1,402 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>歌曲</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="../static/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="../static/css/style.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="../static/css/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<!-- lined-icons -->
+<link rel="stylesheet" href="../static/css/icon-font.min.css" type='text/css' />
+<!-- //lined-icons -->
+ <!-- Meters graphs -->
+<script src="../static/js/jquery-1.10.2.min.js"></script>
+
+</head> 
+   
+ <body class="sticky-header left-side-collapsed" >
+    <section>
+      <!-- left side start-->
+	  <div class="left-side sticky-left-side">
+
+		<!--logo and iconic logo start-->
+		<div class="logo">
+			<h1><a href="index">EchoBuzzing</a></h1>
+		</div>
+		<div class="logo-icon text-center">
+			<a href="index">EB</a>
+		</div>
+
+		<!--logo and iconic logo end-->
+		<div class="left-side-inner">
+
+			<!--sidebar nav start-->
+				<ul class="nav nav-pills nav-stacked custom-nav">
+					<li><a href="index"><i class="lnr lnr-home"></i><span>主页</span></a></li>
+					<li><a href="classify"><i class="lnr lnr-indent-increase"></i> <span>音乐分类</span></a>  </li>
+					<li><a href="singer"><i class="lnr lnr-users"></i> <span>歌手</span></a></li> 
+					<li><a href="userPage"><i class="lnr lnr-music-note"></i><span>我的音乐</span></a></li>						
+				</ul>
+			<!--sidebar nav end-->
+		</div>
+	</div>>
+		<!-- left side end-->
+				<!-- app-->
+			<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog facebook" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+						</div>
+						<div class="modal-body">
+							<div class="app-grids">
+								<div class="app">
+						<div class="col-md-5 app-left mpl">
+							<h3>Mosaic mobile app on your smartphone!</h3>
+							<p>Download and Avail Special Songs Videos and Audios.</p>
+							<div class="app-devices">
+								<h5>Gets the app from</h5>
+								<a href="#"><img src="../static/images/1.png" alt=""></a>
+								<a href="#"><img src="../static/images/2.png" alt=""></a>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="col-md-7 app-image">
+							<img src="../static/images/apps.png" alt="">
+						</div>
+						<div class="clearfix"></div>
+					</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //app-->
+		<!-- signup -->
+		<!-- signup -->
+			<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content modal-info">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+						</div>
+						<div class="modal-body modal-spa">
+							<div class="sign-grids">
+								<div class="sign">
+									<div class="sign-right">
+    									<form action="register" method="post">
+        									<h3>Create your account </h3>
+        									<br>
+        									<p> <label class="register_title">用户名：</label> <input id="usr-name" type="text" name="name" value="Name" onfocus="this.value = '';this.style.color='black';" onblur="if (this.value == '') {this.value = 'Name';} if(this.value==''||this.value=='Name'){this.style.color='gray';}" required="" style="color:gray"></p>
+        									<p> <label class="register_title">邮箱：</label><input id="usr-email" type="text" name="email" value="Email" onfocus="this.value = '';this.style.color='black';" onblur="if (this.value == '') {this.value = 'Email';}if(this.value==''||this.value=='Name'){this.style.color='gray';}" required style="color:gray"></p>
+        									<p> <label class="register_title">密码：</label><input id="usr-password1" type="password" name="password" value="Password1" onfocus="this.value = '';this.style.color='black';" onblur="if (this.value == '') {this.value = 'Password1';}if(this.value==''||this.value=='Name'){this.style.color='gray';}" required style="color:gray"></p>	
+        									<p> <label class="register_title">再次输入密码：</label><input id="usr-password2" type="password" name="password2" value="Password2" onfocus="this.value = '';this.style.color='black';" onblur="if (this.value == '') {this.value = 'Password2';}if(this.value==''||this.value=='Name'){this.style.color='gray';}" required style="color:gray">	</p>
+        									<p class="warning" id="register-warning"></p>
+        									<input type="button" value="CREATE ACCOUNT" onclick="userRegister()">
+    									</form>
+									</div>
+									<div class="clearfix"></div>								
+								</div>
+								<p>By logging in you agree to our <span>Terms and Conditions</span> and <span>Privacy Policy</span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //signup -->
+
+		<!-- left side end-->
+		<!-- main content start-->
+		<div class="main-content">
+			<!-- header-starts -->
+			<div class="header-section">
+			<!--toggle button start-->
+			<a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+			<!--toggle button end-->
+			<!--notification menu start -->
+				<div class="menu-right">
+					<div class="profile_details">		
+						  <div class="col-md-4 serch-part">
+								<div id="sb-search" class="sb-search">
+									<form action="#" method="post" id="search-form">
+
+										<input class="sb-search-input" placeholder="Search" type="search" name="search" id="search-input">
+										<input class="sb-search-submit" type="button" value="" >
+										<span class="sb-icon-search" onclick="searchMusic()"> </span>
+									</form>
+								</div>
+							</div>
+							  <!-- search-scripts -->
+									<script src="../static/js/classie.js"></script>
+									<script src="../static/js/uisearch.js"></script>
+										<script>
+											new UISearch( document.getElementById( 'sb-search' ) );
+										</script>
+									<!-- //search-scripts -->
+											 <!---->
+											 <div style="width: 40px;height: 40px; position: absolute; top: 13px; left: 29%;">
+												<img id="cover-img" src="../static/images/song/新世界NEW WORLD.jpg" style="width: 40px;height: 40px;">
+											</div>
+											  <div class="col-md-4 player">
+												  
+													<div class="audio-player">
+														<audio id="audio-player"  controls="controls">
+														<source src="../static/media/新世界.mp3" type="audio/mp3"></source>
+														</audio>
+														</div>
+												<!---->
+												<script type="text/javascript">
+													$(function(){
+													  $('#audio-player').mediaelementplayer({
+														alwaysShowControls: true,
+														features: ['playpause','progress','volume'],
+														audioVolume: 'horizontal',
+														iPadUseNativeControls: true,
+														iPhoneUseNativeControls: true,
+														AndroidUseNativeControls: true
+													});
+												 });
+													var musiclist=['新世界','斗牛']
+													var musicimg=document.getElementById('cover-img')
+													//var pre=document.getElementById('pre-img')
+													//var next=document.getElementById('next-img')
+													var num=0
+													function clickPre(){
+														if(num>0){
+															num-=1
+														}else{
+															num=musiclist.length-1
+														}
+														document.getElementById('audio-player').src='../static/media/'+musiclist[num]+'.mp3'
+														document.getElementById('audio-player').play()
+														//document.getElementById('cover-img').src="../static/images/song/新世界NEW WORLD.jpg"
+														return false
+													}
+													function clickNext(){
+														if(num<musiclist.length-1){
+															num+=1
+														}else{
+															num=0
+														}
+														document.getElementById('audio-player').src='../static/media/'+musiclist[num]+'.mp3'
+														document.getElementById('audio-player').play()
+														//document.getElementById('cover-img').src="../static/images/song/寒鸦少年.jpg"
+														return false
+													}
+												</script>
+												<!--audio-->
+													<link rel="stylesheet" type="text/css" media="all" href="../static/css/audio.css">
+													<script type="text/javascript" src="../static/js/mediaelement-and-player.min.js"></script>
+													<!---->
+
+													
+												<!--/<a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5"><i class="fa fa-sign-in"></i></a>/-->
+												<ul class="next-top" style="top:-1px">
+													<li><span class="ar"><img id="pre-img" onclick="clickPre()" src="../static/images/arrow.png" alt=""/></span></li>
+													<li><span class="ar2"><img id="next-img" onclick="clickNext()"src="../static/images/arrow2.png" alt=""/></i></span></li>
+														
+											 </ul>	
+											</div>
+											<div class="col-md-4 login-pop">
+												<div id="loginpop"> <a href="#" id="loginButton"><span>登录</span></a><a href="#" data-toggle="modal" data-target="#myModal5" id="registerButton"><span>注册</span></a>
+													<div id="loginBox">  
+    													<form action="login" method="post" id="loginForm">
+        													<fieldset id="body">
+            													<fieldset>
+                  													<label for="name">用户名</label>
+                  													<input type="text" name="name" id="name">
+            													</fieldset>
+            													<fieldset>
+                    													<label for="password">密码</label>
+                    													<input type="password" name="password" id="password">
+             													</fieldset>
+             													<p class="warning" id="login-warning"></p>
+            													<input type="button" id="login" value="Login" onclick="userlogin()">
+        													</fieldset>
+    													</form>
+													</div>
+												</div>
+
+											</div>
+										<div class="clearfix"> </div>
+								</div>
+							<!-------->
+						</div>
+					<div class="clearfix"></div>
+				</div>
+			<!--notification menu end -->
+			<!-- //header-ends -->
+
+		<!-- //header-ends -->
+			<div id="page-wrapper">
+				
+				<div class="inner-content single">
+						    <!--/music-right-->
+						<div class="tittle-head" id="tittle-head">
+
+								</div>
+						   <div class="single_left">
+								<!--/video-main-->
+								 <div class="video-main">
+									<div class="video-record-list">
+										<div id="jp_container_1" class="jp-video jp-video-270p" role="application" aria-label="media player">
+											<div class="jp-type-playlist">
+                                                <div id="jquery_jplayer_1" class="top-song-div">
+                                                    
+                                                    
+                                                </div>
+
+
+												<div class="jp-no-solution" style="display: none;">
+													<span>Update Required</span>
+													To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- script for play-list -->
+				<link href="../static/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css">
+				<script type="text/javascript" src="../static/js/jquery.jplayer.min.js"></script>
+				<script type="text/javascript" src="../static/js/jplayer.playlist.min.js"></script>
+				
+			<!-- //script for play-list -->
+						<!--//video-main-->
+				</div>
+				<div class="response">
+                    <div id="singer-name">
+                    </div>
+                    <div id="song-album-name">
+
+                    </div>
+                    <br><br>
+                    <a href="#" onclick="playSingleSong()"><span class="new" id="play"style="width: 70px;height: 40px;font-size: large;text-align:center;margin:2%">播放</span></a>
+                    <a href="#" data-toggle="modal" data-target="#myList"><span class="new" id="play"style="width: 70px;height: 40px;font-size: large;text-align:center;margin:2%">收藏</span></a>
+					<div class="modal fade" id="myList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content modal-info">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+								</div>
+								<div class="modal-body modal-spa">
+									<div class="sign-grids">
+										<div class="sign">
+											<div class="sign-right">
+												<form action="#" method="post">
+
+													<h3>我的歌单 </h3>
+													<br><br>
+
+													<div id="my-list">
+														
+													</div>
+												</form>
+											</div>
+											<div class="clearfix"></div>								
+										</div>
+										<br>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="lyrics" id="lyrics">
+                    <div style="position: relative;right: 100%;" id="lyrics-content">
+
+                </div>
+                </div>
+
+				<div class="clearfix"> </div>
+						<!--//music-right-->
+						<div class="coment-form">
+					<h4>评论</h4>
+					<form action="#" method="post">
+
+						<textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '评论';}" required id="song-comment-text">评论</textarea>
+                        <input type="button" value="提交评论" id="song-comment-submit">
+                    </form>
+                    <br>
+                    <div>
+                        <h5 style="font-size: large;">全部评论</h5>
+                        <div class="pre-scrollable" style="height: 500px;" id="song-comments-list">
+                        
+                       </div>
+                    </div>
+                    
+                    
+				</div>
+			</div>
+						
+
+				</div>
+			<div class="clearfix"></div>
+						<!--body wrapper end-->
+
+					</div>
+			  <!--body wrapper end-->
+			    			    <div class="footer_two">
+				
+				</div>
+					 <div class="clearfix"> </div>
+				</div>
+			</div>
+
+      <!-- main content end-->
+   </section>
+<script>
+    var songinf=sessionStorage.songobj
+    var song=JSON.parse(songinf)
+    
+    var titleContent='<h3 class="tittle">'+song.song.songName+'</h3><div class="clearfix"> </div>'
+    document.getElementById("tittle-head").innerHTML=titleContent
+    
+    var imgContent='<img id="jp_poster_0" class="top-song-img" src="'+song.song.pictureAddress+'" style="width:100%; height: 90%;position: absolute;transition: all 0.6s;">'
+    document.getElementById("jquery_jplayer_1").innerHTML=imgContent
+    
+    var singerContent='<span style="font-size: large;">歌手：</span><a href="" ><span style="font-size: large;">'+song.song.songSinger+'</span></a>'
+    document.getElementById("singer-name").innerHTML=singerContent
+    
+    var albumContent='<br><br><span style="font-size: large;">所属专辑：</span><span style="font-size: large;">《'+song.song.songAlbum+'》</span>'
+    document.getElementById("song-album-name").innerHTML=albumContent
+    
+    var songcommentlist=document.getElementById("song-comments-list")
+    //alert(song.comments.length)
+    for(let i in song.comments){
+    	if(song.comments[i].userName!="无用户进行评价"){
+        	let add=document.createElement("div")
+        	add.className="single-usr"
+        	add.innerHTML='<hr><a href="#">'+song.comments[i].userName+'</a>:<br>'+song.comments[i].songComment
+        	songcommentlist.appendChild(add)
+    	}
+
+    }
+    
+    var lyricContent='<br><br>'+song.song.lyric
+    document.getElementById("lyrics-content").innerHTML=lyricContent
+    
+    var mylists=document.getElementById("my-list")
+    var usr=JSON.parse(sessionStorage.onlineUsr)
+    for(let i in usr.userVO.songLists){
+    	let add=document.createElement("div")
+    	add.innerHTML='<a href="#" class="list-group-item" onclick="collectSong('+usr.userVO.songLists[i].songListId+')">'+usr.userVO.songLists[i].songListName+'</a>'
+    	mylists.appendChild(add)
+    }
+    	
+</script>
+<script src="../static/js/jquery.nicescroll.js"></script>
+<script src="../static/js/scripts.js"></script>
+<script src="../static/js/ajax.js"></script>
+<!-- Bootstrap Core JavaScript -->
+   <script src="../static/js/bootstrap.min.js"></script>
+
+</body>
+</html>

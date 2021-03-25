@@ -1,0 +1,642 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="../static/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="../static/css/style.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="../static/css/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<!-- lined-icons -->
+<link rel="stylesheet" href="../static/css/icon-font.min.css" type='text/css' />
+<!-- //lined-icons -->
+ <!-- Meters graphs -->
+<script src="../static/js/jquery-1.10.2.min.js"></script>
+	<title>EchoBuzzing</title>
+</head> 
+   
+ <body class="sticky-header left-side-collapsed" onload="logout()">
+    <section>
+      <!-- left side start-->
+		<div class="left-side sticky-left-side">
+
+			<!--logo and iconic logo start-->
+			<div class="logo">
+				<h1><a href="index">EchoBuzzing</a></h1>
+			</div>
+			<div class="logo-icon text-center">
+				<a href="index">EB</a>
+			</div>
+
+			<!--logo and iconic logo end-->
+			<div class="left-side-inner">
+
+				<!--sidebar nav start-->
+					<ul class="nav nav-pills nav-stacked custom-nav">
+						<li class="active"><a href="index"><i class="lnr lnr-home"></i><span>主页</span></a></li>
+						<li><a href="classify"><i class="lnr lnr-indent-increase"></i> <span>音乐分类</span></a>  </li>
+						<li><a href="singer"><i class="lnr lnr-users"></i> <span>歌手</span></a></li> 
+						<li><a href="userPage"><i class="lnr lnr-music-note"></i><span>我的音乐</span></a></li>						
+					</ul>
+				<!--sidebar nav end-->
+			</div>
+		</div>
+
+		<!-- signup -->
+			<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content modal-info">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+						</div>
+						<div class="modal-body modal-spa">
+							<div class="sign-grids">
+								<div class="sign">
+									<div class="sign-right">
+    									<form action="register" method="post">
+        									<h3>Create your account </h3>
+        									<br>
+        									<p> <label class="register_title">用户名：</label> <input id="usr-name" type="text" name="name" value="Name" onfocus="this.value = '';this.style.color='black';" onblur="if (this.value == '') {this.value = 'Name';} if(this.value==''||this.value=='Name'){this.style.color='gray';}" required="" style="color:gray"></p>
+        									<p> <label class="register_title">邮箱：</label><input id="usr-email" type="text" name="email" value="Email" onfocus="this.value = '';this.style.color='black';" onblur="if (this.value == '') {this.value = 'Email';}if(this.value==''||this.value=='Name'){this.style.color='gray';}" required style="color:gray"></p>
+        									<p> <label class="register_title">密码：</label><input id="usr-password1" type="password" name="password" value="Password1" onfocus="this.value = '';this.style.color='black';" onblur="if (this.value == '') {this.value = 'Password1';}if(this.value==''||this.value=='Name'){this.style.color='gray';}" required style="color:gray"></p>	
+        									<p> <label class="register_title">再次输入密码：</label><input id="usr-password2" type="password" name="password2" value="Password2" onfocus="this.value = '';this.style.color='black';" onblur="if (this.value == '') {this.value = 'Password2';}if(this.value==''||this.value=='Name'){this.style.color='gray';}" required style="color:gray">	</p>
+        									<p class="warning" id="register-warning"></p>
+        									<input type="button" value="CREATE ACCOUNT" onclick="userRegister()">
+    									</form>
+									</div>
+									<div class="clearfix"></div>								
+								</div>
+								<p>By logging in you agree to our <span>Terms and Conditions</span> and <span>Privacy Policy</span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //signup -->
+
+		<!-- left side end-->
+		<!-- main content start-->
+		<div class="main-content">
+			<!-- header-starts -->
+			<div class="header-section">
+			<!--toggle button start-->
+			<a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+			<!--toggle button end-->
+			<!--notification menu start -->
+				<div class="menu-right">
+					<div class="profile_details">		
+						  <div class="col-md-4 serch-part">
+								<div id="sb-search" class="sb-search">
+									<form action="#" method="post" id="search-form">
+
+										<input class="sb-search-input" placeholder="Search" type="search" name="search" id="search-input">
+										<input class="sb-search-submit" type="button" value="" >
+										<span class="sb-icon-search" onclick="searchMusic()"> </span>
+									</form>
+								</div>
+							</div>
+							  <!-- search-scripts -->
+									<script src="../static/js/classie.js"></script>
+									<script src="../static/js/uisearch.js"></script>
+										<script>
+											new UISearch( document.getElementById( 'sb-search' ) );
+										</script>
+									<!-- //search-scripts -->
+											 <!---->
+											 <div style="width: 40px;height: 40px; position: absolute; top: 13px; left: 29%;">
+												<img id="cover-img" src="../static/images/song/新世界NEW WORLD.jpg" style="width: 40px;height: 40px;">
+											</div>
+											  <div class="col-md-4 player">
+												  
+													<div class="audio-player">
+														<audio id="audio-player"  controls="controls">
+														<source src="../static/media/新世界.mp3" type="audio/mp3"></source>
+														</audio>
+														</div>
+												<!---->
+												<script type="text/javascript">
+													$(function(){
+													  $('#audio-player').mediaelementplayer({
+														alwaysShowControls: true,
+														features: ['playpause','progress','volume'],
+														audioVolume: 'horizontal',
+														iPadUseNativeControls: true,
+														iPhoneUseNativeControls: true,
+														AndroidUseNativeControls: true
+													});
+												 });
+
+													var musiclist=['../static/media/新世界.mp3','../static/media/斗牛.mp3']
+													var musicimg=document.getElementById('cover-img')
+													//var pre=document.getElementById('pre-img')
+													//var next=document.getElementById('next-img')
+													var num=0
+													function clickPre(){
+														if(num>0){
+															num-=1
+														}else{
+															num=musiclist.length-1
+														}
+														document.getElementById('audio-player').src=musiclist[num]
+														document.getElementById('audio-player').play()
+														//document.getElementById('cover-img').src="../static/images/song/新世界NEW WORLD.jpg"
+														return false
+													}
+													function clickNext(){
+														if(num<musiclist.length-1){
+															num+=1
+														}else{
+															num=0
+														}
+														document.getElementById('audio-player').src=musiclist[num]
+														document.getElementById('audio-player').play()
+														//document.getElementById('cover-img').src="../static/images/song/寒鸦少年.jpg"
+														return false
+													}
+												</script>
+												<!--audio-->
+													<link rel="stylesheet" type="text/css" media="all" href="../static/css/audio.css">
+													<script type="text/javascript" src="../static/js/mediaelement-and-player.min.js"></script>
+													<!---->
+
+													
+												<!--/<a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5"><i class="fa fa-sign-in"></i></a>/-->
+												<ul class="next-top" style="top:-1px">
+													<li><span class="ar"><img id="pre-img" onclick="clickPre()" src="../static/images/arrow.png" alt=""/></span></li>
+													<li><span class="ar2"><img id="next-img" onclick="clickNext()"src="../static/images/arrow2.png" alt=""/></i></span></li>
+														
+											 </ul>	
+											</div>
+											<div class="col-md-4 login-pop">
+												<div id="loginpop"> <a href="#" id="loginButton"><span>登录</span></a><a href="#" data-toggle="modal" data-target="#myModal5" id="registerButton"><span>注册</span></a>
+													<div id="loginBox">  
+    													<form action="login" method="post" id="loginForm">
+        													<fieldset id="body">
+            													<fieldset>
+                  													<label for="name">用户名</label>
+                  													<input type="text" name="name" id="name">
+            													</fieldset>
+            													<fieldset>
+                    													<label for="password">密码</label>
+                    													<input type="password" name="password" id="password">
+             													</fieldset>
+             													<p class="warning" id="login-warning"></p>
+            													<input type="button" id="login" value="Login" onclick="userlogin()">
+        													</fieldset>
+    													</form>
+													</div>
+												</div>
+
+											</div>
+										<div class="clearfix"> </div>
+								</div>
+							<!-------->
+						</div>
+					<div class="clearfix"></div>
+				</div>
+			<!--notification menu end -->
+			<!-- //header-ends -->
+
+		<!-- //header-ends -->
+			<div id="page-wrapper">
+				<div class="inner-content">
+				      <div class="music-left">
+					      <!--banner-section-->
+							<div class="banner-section">
+								<div class="banner">
+									 <div class="callbacks_container">
+										<ul class="rslides callbacks callbacks1" id="slider4">
+											   	<li>
+														<div class="banner-img">
+															 <img src="../static/images/11.jpg" class="img-responsive" alt="">
+														 </div>
+														
+												</li>
+												<li>
+													<div class="banner-img">
+															 <img src="../static/images/22.jpg" class="img-responsive" alt="">
+														 </div>
+
+												</li>
+												<li>
+												 <div class="banner-img">
+															 <img src="../static/images/33.jpg" class="img-responsive" alt="">
+														 </div>
+														
+												</li>
+											</ul>
+										</div>
+										<!--banner-->
+									<script src="../static/js/responsiveslides.min.js"></script>
+								 <script>
+									// You can also use "$(window).load(function() {"
+									$(function () {
+									  // Slideshow 4
+									  $("#slider4").responsiveSlides({
+										auto: true,
+										pager:true,
+										nav:true,
+										speed: 500,
+										namespace: "callbacks",
+										before: function () {
+										  $('.events').append("<li>before event fired.</li>");
+										},
+										after: function () {
+										  $('.events').append("<li>after event fired.</li>");
+										}
+									  });
+								
+									});
+								  </script>
+								<div class="clearfix"> </div>
+							</div>
+						</div>	
+				<!--//End-banner-->
+					<!--albums-->
+					<!-- pop-up-box --> 
+							<link href="../static/css/popuo-box.css" rel="stylesheet" type="text/css" media="all">
+							<script src="../static/js/jquery.magnific-popup.js" type="text/javascript"></script>
+							 <script>
+									$(document).ready(function() {
+									$('.popup-with-zoom-anim').magnificPopup({
+										type: 'inline',
+										fixedContentPos: false,
+										fixedBgPos: true,
+										overflowY: 'auto',
+										closeBtnInside: true,
+										preloader: false,
+										midClick: true,
+										removalDelay: 300,
+										mainClass: 'my-mfp-zoom-in'
+									});
+									});
+							</script>		
+					<!--//pop-up-box -->
+						<div class="albums">
+
+								<div class="tittle-head">
+									<h3 class="tittle">新歌首发 <span class="new" >New</span></h3>
+									
+									<div class="clearfix"> </div>
+								</div>
+								<div class="col-md-3 content-grid">
+								<img src="../static/images/album/what'sgoingon.jpg" title="allbum-name" id="img-img" onclick="showSongPage(3)">
+								<a class="button play-icon popup-with-zoom-anim"  href="">不如不见</a>
+							</div>
+							<div id="small-dialog" class="mfp-hide">
+								
+								
+							</div>
+							<div class="col-md-3 content-grid">
+								<img src="../static/images/album/新的心跳.jpg" title="allbum-name" onclick="showSongPage(17)">
+
+								<a class="button play-icon popup-with-zoom-anim" href="">多远都要在一起</a>
+							</div>
+							<div class="col-md-3 content-grid">
+								<img src="../static/images/album/好想爱这个世界啊.jpg" title="allbum-name" onclick="showSongPage(22)">
+
+								<a class="button play-icon popup-with-zoom-anim" href="">好想爱这个世界啊</a>
+							</div>
+							<div class="col-md-3 content-grid last-grid">
+								<img src="../static/images/album/平凡的一天.jpg" title="allbum-name" onclick="showSongPage(32)">
+	
+								<a class="button play-icon popup-with-zoom-anim" href="">像我这样的人</a>
+							</div>
+							<div class="col-md-3 content-grid">
+								<img src="../static/images/album/菲主打.jpg" title="allbum-name" onclick="showSongPage(43)">
+
+								<a class="button play-icon popup-with-zoom-anim" href="">暧昧</a>
+							</div>
+							<div id="small-dialog" class="mfp-hide">
+								
+								
+							</div>
+							<div class="col-md-3 content-grid">
+								<img src="../static/images/album/成都.jpg" title="allbum-name" onclick="showSongPage(67)">
+		
+								<a class="button play-icon popup-with-zoom-anim" href="" >成都</a>
+							</div>
+							<div class="col-md-3 content-grid">
+								<img src="../static/images/album/十一月的肖邦.jpg" title="allbum-name" onclick="showSongPage(83)">
+
+								<a class="button play-icon popup-with-zoom-anim" href="">夜曲</a>
+							</div>
+							<div class="col-md-3 content-grid last-grid">
+								<img src="../static/images/album/神的孩子都在跳舞.jpg" title="allbum-name" onclick="showSongPage(55)"></a>
+												<a class="button play-icon popup-with-zoom-anim" href="">晚安地球人</a>
+											</div>
+											<div class="clearfix"> </div>
+										</div>
+					<!--//End-albums-->
+						<!--//discover-view-->
+						<div class="albums second">
+										<div class="tittle-head">
+											<h3 class="tittle">新碟首发 <span class="new">View</span></h3>
+											
+											<div class="clearfix"> </div>
+										</div>
+											<div class="col-md-3 content-grid">
+												<img src="../static/images/album/小王.jpg" title="allbum-name" onclick="showList(25)">
+												<div class="inner-info"><a href="" onclick="showList(25)"><h5>小王 -毛不易</h5></a></div>
+											</div>
+											<div class="col-md-3 content-grid">
+													<img src="../static/images/album/新世界NEW WORLD.jpg" title="allbum-name" onclick="showList(17)">
+													<div class="inner-info"><a href="" onclick="showList(17)"><h5>新世界NEW WORLD -华晨宇</h5></a></div>
+												</div>
+											<div class="col-md-3 content-grid">
+													<img src="../static/images/album/赵小雷.jpg" title="allbum-name" onclick="showList(35)">
+													<div class="inner-info"><a href="" onclick="showList(35)"><h5>赵小雷 -赵雷</h5></a></div>
+												</div>
+											<div class="col-md-3 content-grid last-grid">
+													<img src="../static/images/album/iamwhatiam.jpg" title="allbum-name" onclick="showList(39)">
+													<div class="inner-info"><a href="" onclick="showList(39)"><h5>I Am What I Am -张国荣</h5></a></div>
+											</div>
+											<div class="col-md-3 content-grid">
+													<img src="../static/images/album/GetALife.jpg" title="allbum-name" onclick="showList(7)">
+													<div class="inner-info"><a href="" onclick="showList(7)"><h5>Get A Life -陈奕迅</h5></a></div>
+											</div>
+											<div class="col-md-3 content-grid">
+												<img src="../static/images/album/好想爱这个世界啊.jpg" title="allbum-name" onclick="showList(15)">
+												<div class="inner-info"><a href="" onclick="showList(15)"><h5>好想爱这个世界啊 -华晨宇</h5></a></div>
+											</div>
+											<div class="col-md-3 content-grid">
+													<img src="../static/images/album/阿菲正传.jpg" title="allbum-name" onclick="showList(29)">
+													<div class="inner-info"><a href="" onclick="showList(29)"><h5>阿菲正传 -王菲</h5></a></div>
+											</div>
+											<div class="col-md-3 content-grid last-grid">
+													<img src="../static/images/album/另一个童话.jpg" title="allbum-name" onclick="showList(13)">
+													<div class="inner-info"><a href="" onclick="showList(13)"><h5>另一个童话 -邓紫棋</h5></a></div>
+											</div>
+											<div class="clearfix"> </div>
+									</div>
+								<!--//discover-view-->
+							</div>
+							<!--//music-left-->
+						    <!--/music-right-->
+						   <div class="music-right">
+								<!--/video-main-->
+								 <div class="video-main">
+									<div class="video-record-list">
+										<div id="jp_container_1" class="jp-video jp-video-270p" role="application" aria-label="media player">
+											<div class="jp-type-playlist">
+												<div class="jp-MVplayer-home-list" >
+													<h3 class="title" ><b>MV推荐 </b><span class="new" >MV</span></h3>
+													<div>
+														<p>二零三-毛不易</p>
+														<video src="../static/video/毛不易-二零三 .mp4" controls poster="../static/images/mvposter/二零三.JPG" width="400px" height="250px"></video>
+														<br>
+														<br>
+													</div>
+														<P>国王与乞丐-华晨宇/杨宗纬</P>
+													<video src="../static/video/国王与乞丐.mp4" controls poster="../static/images/mvposter/国王与乞丐.JPG" width="400px" height="250px"></video>
+													<br>
+												</div>
+												<div class="jp-playlist_mine">
+													<h3 class="title"><b>歌曲排行榜 </b><span class="new" >RankingList</span></h3>
+													<ul style="display: block;" class="jp-playerlist-item-ul">
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(3)">不如不见<span class="jp-artist"> -陈奕迅</span></a></div></li>
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(25)">好想爱这个世界啊 <span class="jp-artist"> -华晨宇</span></a></div></li>
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(37)">小王 <span class="jp-artist"> -毛不易</span></a></div></li>
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(1)">Shall We Talk(Live) <span class="jp-artist"> -陈奕迅-Get A Life演唱会</span></a></div></li>
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(69)">画 <span class="jp-artist"> -赵雷</span></a></div></li>
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(65)">追 <span class="jp-artist"> -张国荣</span></a></div></li>
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(27)">七重人格 <span class="jp-artist"> -华晨宇</span></a></div></li>
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(29)">新世界 <span class="jp-artist"> -华晨宇</span></a></div></li>
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(28)">神树 <span class="jp-artist"> -华晨宇</span></a></div></li>
+														<li><div class="jp-playlist-item-div"><a href="javascript:;" class="jp-playlist-item" tabindex="0" onclick="showSongPage(43)">暧昧 <span class="jp-artist"> -王菲</span></a></div></li>
+														
+													</ul>
+												</div>
+												</div>
+												<div class="jp-no-solution" style="display: none;">
+													<span>Update Required</span>
+													To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- script for play-list -->
+				<link href="../static/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css">
+				<script type="text/javascript" src="../static/js/jquery.jplayer.min.js"></script>
+				<script type="text/javascript" src="../static/js/jplayer.playlist.min.js"></script>
+				<script type="text/javascript">
+				//<![CDATA[
+				$(document).ready(function(){
+
+					new jPlayerPlaylist({
+						jPlayer: "#jquery_jplayer_1",
+						cssSelectorAncestor: "#jp_container_1"
+					}, [
+						
+						{
+							title:"1. Ellie-Goulding",
+							artist:"",
+							mp4: "../static/video/Ellie-Goulding.mp4",
+							ogv: "../static/video/Ellie-Goulding.ogv",
+							webmv: "../static/video/Ellie-Goulding.webm",
+							poster:"../static/video/play1.png"
+						},
+						{
+							title:"2. Mark-Ronson-Uptown",
+							artist:"",
+							mp4: "../static/video/Mark-Ronson-Uptown.mp4",
+							ogv: "../static/video/Mark-Ronson-Uptown.ogv",
+							webmv: "../static/video/Mark-Ronson-Uptown.webm",
+							poster:"../static/video/play2.png"
+						},
+						{
+							title:"3. Ellie-Goulding",
+							artist:"",
+							mp4: "../static/video/Ellie-Goulding.mp4",
+							ogv: "../static/video/Ellie-Goulding.ogv",
+							webmv: "../static/video/Ellie-Goulding.webm",
+							poster:"../static/video/play1.png"
+						},
+						{
+							title:"4. Maroon-Sugar",
+							artist:"",
+							mp4: "../static/video/Maroon-Sugar.mp4",
+							ogv: "../static/video/Maroon-Sugar.ogv",
+							webmv: "../static/video/Maroon-Sugar.webm",
+							poster:"../static/video/play4.png"
+						},
+						{
+							title:"5. Pharrell-Williams",
+							artist:"",
+							mp4: "../static/video/Pharrell-Williams.mp4",
+							ogv: "../static/video/Pharrell-Williams.ogv",
+							webmv: "../static/video/Pharrell-Williams.webm",
+							poster:"../static/video/play5.png"
+						},
+						{
+							title:"6. Ellie-Goulding",
+							artist:"",
+							mp4: "../static/video/Ellie-Goulding.mp4",
+							ogv: "../static/video/Ellie-Goulding.ogv",
+							webmv: "../static/video/Ellie-Goulding.webm",
+							poster:"../static/video/play1.png"
+						},
+						{
+							title:"7. Pharrell-Williams",
+							artist:"",
+							mp4: "../static/video/Pharrell-Williams.mp4",
+							ogv: "../static/video/Pharrell-Williams.ogv",
+							webmv: "../static/video/Pharrell-Williams.webm",
+							poster:"../static/video/play5.png"
+						}
+					], {
+						swfPath: "../../dist/jplayer",
+						supplied: "webmv,ogv,mp4",
+						useStateClassSkin: true,
+						autoBlur: false,
+						smoothPlayBar: true,
+						keyEnabled: true
+					});
+
+				});
+				//]]>
+					</script>
+		
+						<div class="review-slider">
+								<div class="tittle-head">
+									<h3 class="tittle">推荐歌单 <span class="new"> New</span></h3>
+									<div class="clearfix"> </div>
+								</div>
+								 <ul id="flexiselDemo1">
+								<li>
+								
+									<img src="../static/images/songlist/一周新歌.jpg" alt="" id="song-list-0" onclick="showList(68)"/>
+									<div class="slide-title" ><h4>一周新歌推荐 </div>
+									<div class="date-city">
+										<h5>官方</h5>
+										<div class="buy-tickets">
+											<a href="#"onclick="showList(68)"><span>Listen Now</span></a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<img src="../static/images/songlist/电影.jpg" alt="" onclick="showList(70)"/>
+									<div class="slide-title"><h4>电影中的经典歌曲</h4></div>
+									<div class="date-city">
+										<h5>官方</h5>
+										<div class="buy-tickets">
+											<a href="#"onclick="showList(70)">Listen Now</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<img src="../static/images/songlist/父亲节.jpg" alt="" onclick="showList(74)"/>
+									<div class="slide-title"><h4>父亲节|感谢你不是超人却变成了我的万能</h4></div>
+									<div class="date-city">
+										<h5>官方</h5>
+										<div class="buy-tickets">
+											<a href="#"onclick="showList(74)">Listen Now</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<img src="../static/images/songlist/失恋星球.jpg" alt="" onclick="showList(69)"/>
+									<div class="slide-title"><h4>失恋星球|当初的所有喜欢 都变成了心酸</h4></div>
+									<div class="date-city">
+										<h5>官方</h5>
+										<div class="buy-tickets">
+											<a href="#"onclick="showList(69)">Listen Now</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<img src="../static/images/songlist/书店书城钢琴曲.jpg" alt="" onclick="showList(72)"/>
+									<div class="slide-title"><h4>书店书城中常用钢琴曲 </h4></div>
+									<div class="date-city">
+										<h5>用户3</h5>
+										<div class="buy-tickets">
+											<a href="#"onclick="showList(72)">Listen Now</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<img src="../static/images/songlist/动漫.jpg" alt="" onclick="showList(73)"/>
+									<div class="slide-title"><h4>动漫中的那些动人心弦的旋律 </h4></div>
+									<div class="date-city">
+										<h5>官方</h5>
+										<div class="buy-tickets">
+											<a href="#"onclick="showList(73)">Listen Now</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<img src="../static/images/songlist/英语学习.jpg" alt=""onclick="showList(71)"/>
+									<div class="slide-title"><h4>适合英语学习的安静歌曲 </h4></div>
+									<div class="date-city">
+										<h5>官方</h5>
+										<div class="buy-tickets">
+											<a href="#"onclick="showList(71)">Listen Now</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<script type="text/javascript">
+						$(window).load(function() {
+							
+						  $("#flexiselDemo1").flexisel({
+								visibleItems: 5,
+								animationSpeed: 1000,
+								autoPlay: true,
+								autoPlaySpeed: 3000,    		
+								pauseOnHover: false,
+								enableResponsiveBreakpoints: true,
+								responsiveBreakpoints: { 
+									portrait: { 
+										changePoint:480,
+										visibleItems: 2
+									}, 
+									landscape: { 
+										changePoint:640,
+										visibleItems: 3
+									},
+									tablet: { 
+										changePoint:800,
+										visibleItems: 4
+									}
+								}
+							});
+							});
+						</script>
+						<script type="text/javascript" src="../static/js/jquery.flexisel.js"></script>	
+						</div>
+								</div>
+							<div class="clearfix"></div>
+						<!--body wrapper end-->
+
+					</div>
+			  <!--body wrapper end-->
+			     <div class="footer">
+			
+						<h3 class="developer_Htitle"> About Us </h3>
+						<p class="developer_infor"> <span class="developer_title" >Developers：</span> WSP  LJX  LWW  ZS</p>
+						<p class="developer_infor"> <span class="developer_title">Phone：</span>  &nbsp;&nbsp;&nbsp;158########</p>
+						<p class="developer_infor"> <span class="developer_title">Email：</span> &nbsp;<span><a href="mailto:1219821955@qq.com">MailTo: 1219821955@qq.com</a></span></p>	
+					 </div>
+					 <div class="clearfix"> </div>
+				</div>
+				
+			</div>
+
+
+      <!-- main content end-->
+   </section>
+
+<script src="../static/js/jquery.nicescroll.js"></script>
+<script src="../static/js/scripts.js"></script>
+<script type="text/javascript" src="../static/js/ajax.js"></script>
+<!-- Bootstrap Core JavaScript -->
+   <script src="../static/js/bootstrap.min.js"></script>
+</body>
+</html>

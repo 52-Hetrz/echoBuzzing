@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.echoBuzzing.mapper.CollectSongListMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.echoBuzzing.model.CollectSongList">
+      <result column="collectSongListId" property="collectSongListId" jdbcType="INTEGER" />
+      <result column="userId" property="userId" jdbcType="INTEGER" />
+      <result column="songListId" property="songListId" jdbcType="INTEGER" />
+    </resultMap>
+    
+    <select id="findByUserId" resultType="com.example.echoBuzzing.model.CollectSongList">
+
+        SELECT * FROM collect_song_list_tb WHERE userId=#{userId}
+
+    </select>
+
+
+
+    <select id="findBySongListId" resultType="com.example.echoBuzzing.model.CollectSongList">
+
+        SELECT * FROM collect_song_list_tb WHERE songListId=#{songListId}
+
+    </select>
+
+
+
+    <insert id="insertOne">
+
+        INSERT INTO collect_song_list_tb(songListId,userId) VALUES (#{param1},#{param2})
+
+    </insert>
+
+
+
+    <delete id="deleteOne" parameterType="java.lang.Integer">
+
+        DELETE FROM collect_song_list_tb  WHERE collectSongListId=#{collectSongListId}
+
+    </delete>
+
+
+
+    <select id="findBySongListIdAndUserId" resultType="com.example.echoBuzzing.model.CollectSongList">
+
+        SELECT * FROM collect_song_list_tb WHERE songListId=#{param1} AND userId=#{param2}
+
+    </select>
+    
+    </mapper>

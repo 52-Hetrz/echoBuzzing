@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.echoBuzzing.mapper.SongListCommentMapper">
+   <resultMap id="BaseResultMap" type="com.example.echoBuzzing.model.SongListComment">
+      <result column="songListCommentId" property="songListCommentId" jdbcType="INTEGER" />
+      <result column="songListId" property="songListId" jdbcType="INTEGER" />
+      <result column="userName" property="userName" jdbcType="VARCHAR" />
+      <result column="comment" property="comment" jdbcType="VARCHAR" />
+      <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+      
+   </resultMap>
+   
+   <select id="findBySongListId" resultType="com.example.echoBuzzing.model.SongListComment">
+
+        SELECT * FROM song_list_comment_tb WHERE songListId=#{songListId}
+
+    </select>
+
+
+
+    <select id="findByUserName" resultType="com.example.echoBuzzing.model.SongListComment">
+
+        SELECT * FROM song_list_comment_tb WHERE userName=#{userName}
+
+    </select>
+    
+    
+     <insert id="insertOne">
+
+        INSERT INTO song_list_comment_tb(songListId,userName,comment,createTime) VALUES (#{param1},#{param2},#{param3},#{param4})
+
+    </insert>
+
+</mapper>
